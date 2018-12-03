@@ -1,0 +1,89 @@
+DROP TABLE IF EXISTS Pays ;
+CREATE TABLE Pays (idPays INT AUTO_INCREMENT NOT NULL,
+nomPays VARCHAR,
+PRIMARY KEY (idPays)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Utilisateur ;
+CREATE TABLE Utilisateur (idUtilisateur INT AUTO_INCREMENT NOT NULL,
+pseudoUtilisateur VARCHAR,
+PRIMARY KEY (idUtilisateur)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Film ;
+CREATE TABLE Film (idFilm BIGINT AUTO_INCREMENT NOT NULL,
+nomFilm VARCHAR,
+anneeFilm INT,
+resumeFilm TEXT,
+dureeFilm INT,
+afficheFilm TEXT,
+lienBandeAnnonce TEXT,
+idUtilisateur INT,
+PRIMARY KEY (idFilm)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Genre ;
+CREATE TABLE Genre (idGenre INT AUTO_INCREMENT NOT NULL,
+PRIMARY KEY (idGenre)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Personne ;
+CREATE TABLE Personne (idPersonne INT AUTO_INCREMENT NOT NULL,
+nomPersonne VARCHAR,
+prenomPersonne VARCHAR,
+idPays INT,
+PRIMARY KEY (idPersonne)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Mot_cles ;
+CREATE TABLE Mot_cles (idMotCles INT AUTO_INCREMENT NOT NULL,
+motCles VARCHAR(20),
+PRIMARY KEY (idMotCles)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS est_originaire ;
+CREATE TABLE est_originaire (idPays INT AUTO_INCREMENT NOT NULL,
+idFilm BIGINT NOT NULL,
+PRIMARY KEY (idPays,
+ idFilm)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Produit ;
+CREATE TABLE Produit (idFilm BIGINT AUTO_INCREMENT NOT NULL,
+idPersonne INT NOT NULL,
+PRIMARY KEY (idFilm,
+ idPersonne)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Realiser ;
+CREATE TABLE Realiser (idFilm BIGINT AUTO_INCREMENT NOT NULL,
+idPersonne INT NOT NULL,
+PRIMARY KEY (idFilm,
+ idPersonne)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS appartient ;
+CREATE TABLE appartient (idGenre INT AUTO_INCREMENT NOT NULL,
+idFilm BIGINT NOT NULL,
+PRIMARY KEY (idGenre,
+ idFilm)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Joue ;
+CREATE TABLE Joue (idFilm BIGINT AUTO_INCREMENT NOT NULL,
+idPersonne INT NOT NULL,
+roleJoue_Joue **NOT FOUND**,
+PRIMARY KEY (idFilm,
+ idPersonne)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS decrire ;
+CREATE TABLE decrire (idMotCles INT AUTO_INCREMENT NOT NULL,
+idFilm BIGINT NOT NULL,
+PRIMARY KEY (idMotCles,
+ idFilm)) ENGINE=InnoDB;
+
+ALTER TABLE Film ADD CONSTRAINT FK_Film_idUtilisateur FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (idUtilisateur);
+
+ALTER TABLE Personne ADD CONSTRAINT FK_Personne_idPays FOREIGN KEY (idPays) REFERENCES Pays (idPays);
+ALTER TABLE est_originaire ADD CONSTRAINT FK_est_originaire_idPays FOREIGN KEY (idPays) REFERENCES Pays (idPays);
+ALTER TABLE est_originaire ADD CONSTRAINT FK_est_originaire_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
+ALTER TABLE Produit ADD CONSTRAINT FK_Produit_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
+ALTER TABLE Produit ADD CONSTRAINT FK_Produit_idPersonne FOREIGN KEY (idPersonne) REFERENCES Personne (idPersonne);
+ALTER TABLE Realiser ADD CONSTRAINT FK_Realiser_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
+ALTER TABLE Realiser ADD CONSTRAINT FK_Realiser_idPersonne FOREIGN KEY (idPersonne) REFERENCES Personne (idPersonne);
+ALTER TABLE appartient ADD CONSTRAINT FK_appartient_idGenre FOREIGN KEY (idGenre) REFERENCES Genre (idGenre);
+ALTER TABLE appartient ADD CONSTRAINT FK_appartient_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
+ALTER TABLE Joue ADD CONSTRAINT FK_Joue_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
+ALTER TABLE Joue ADD CONSTRAINT FK_Joue_idPersonne FOREIGN KEY (idPersonne) REFERENCES Personne (idPersonne);
+ALTER TABLE decrire ADD CONSTRAINT FK_decrire_idMotCles FOREIGN KEY (idMotCles) REFERENCES Mot_cles (idMotCles);
+ALTER TABLE decrire ADD CONSTRAINT FK_decrire_idFilm FOREIGN KEY (idFilm) REFERENCES Film (idFilm);
