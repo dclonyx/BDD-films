@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Wireframe.svg">
+   sodipodi:docname="Wireframe.svg"
+   inkscape:export-filename="/home/gen-002/Documents/projet/BDD-films/sources/Wireframe.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs2">
     <marker
@@ -115,18 +118,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="282.06878"
-     inkscape:cy="532.33342"
+     inkscape:zoom="0.60908203"
+     inkscape:cx="217.30871"
+     inkscape:cy="668.27374"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer4"
      showgrid="false"
      inkscape:snap-others="true"
      inkscape:snap-global="false"
      inkscape:window-width="1920"
      inkscape:window-height="1052"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-y="224"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -141,16 +144,36 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="fond">
+    <rect
+       style="fill:#9aa29d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.37659851;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect2087"
+       width="203.73213"
+       height="173.32436"
+       x="5.2127624"
+       y="38.533855"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+  <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     style="display:inline"
+     sodipodi:insensitive="true">
     <g
-       id="g2052">
+       id="g2052"
+       transform="translate(0.24220752,-0.24220752)"
+       style="display:inline">
       <g
-         id="g1810">
+         id="g1810"
+         style="display:inline">
         <g
            id="g1096"
-           transform="matrix(0.47466645,0,0,0.47466645,66.459826,68.642478)">
+           transform="matrix(0.47466645,0,0,0.47466645,66.459826,68.642478)"
+           style="display:inline">
           <g
              id="g921">
             <g
@@ -212,14 +235,14 @@
                 <text
                    xml:space="preserve"
                    style="font-style:normal;font-weight:normal;font-size:8.64287663px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.40513483"
-                   x="74.16703"
-                   y="22.546825"
+                   x="63.451382"
+                   y="23.057095"
                    id="text849"><tspan
                      sodipodi:role="line"
                      id="tspan847"
-                     x="74.16703"
-                     y="22.546825"
-                     style="stroke-width:0.40513483">MOTEUR</tspan></text>
+                     x="63.451382"
+                     y="23.057095"
+                     style="stroke-width:0.40513483">Moteur de recherche</tspan></text>
               </g>
             </g>
             <text
