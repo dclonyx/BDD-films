@@ -9,7 +9,7 @@
     <title>Les Films des D Codeurs</title>
     <?php 
     /* Liaison BDD */
-    include('base-pdo.php'); 
+    include('php/base-pdo.php'); 
     ?>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <div id="listeGenre">
                 <select id="genre" name="genre" size="1" class="liste">
                     <?php
-                    include('genre.php'); 
+                    include('php/genre.php'); 
                     // On affiche chaque entrée une à une
                     while ($donnees = $reponse->fetch())
                     {
@@ -39,7 +39,7 @@
             <div id="listeAnnee"> 
                 <select id="annee" name="annee" size="1" class="liste">
                     <?php
-                    include('annee.php'); 
+                    include('php/annee.php'); 
                     // On affiche chaque entrée une à une
                     while ($donnees = $reponse->fetch())
                     {
@@ -55,7 +55,7 @@
             <div id="listePays">
                 <select id="pays" name="pays" size="1" class="liste">
                     <?php
-                    include('pays.php'); 
+                    include('php/pays.php'); 
                     // On affiche chaque entrée une à une
                     while ($donnees = $reponse->fetch())
                     {
@@ -73,7 +73,7 @@
             
 
             <?php
-            include('film.php'); 
+            include('php/film.php'); 
             // On affiche chaque entrée une à une
             while ($donnees = $reponse->fetch())
             {
