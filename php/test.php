@@ -17,10 +17,7 @@ include('base-pdo.php');
 
 
 <?php
-// On récupère tout le contenu de la table film
-$reponse = $bdd->query
-('SELECT *
-FROM Film');
+
 
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch())

@@ -79,11 +79,19 @@
             {
             ?>
             <div id="<?php echo $donnees['nomFilm']; ?>" class="bandeaufilm">
-            <div class="affiche"><img src="<?php echo $donnees['afficheFilm']; ?>" alt=""></div>
-            <div class="text">
-            <h2><?php echo $donnees['nomFilm']; ?></h2>
-            <p></p>
-            </div>
+                <?php if ($donnees['afficheFilm'] != "") {?>
+
+                <div class="affiche"><img src="<?php echo $donnees['afficheFilm']; ?>" alt=""></div>
+
+                <?php } else  { ?>
+
+                <div class="affiche"><img src="https://via.placeholder.com/140x180"></div>
+
+                <?php } ?>
+                <div class="text">
+                    <h2><?php echo $donnees['nomFilm']; ?></h2>
+                    <p></p>
+                </div>
             </div>
             <?php
             }
