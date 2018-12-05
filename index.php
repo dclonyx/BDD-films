@@ -9,7 +9,7 @@
     <title>Les Films des D Codeurs</title>
     <?php 
     /* Liaison BDD */
-    include('php/base-pdo.php'); 
+    include('base/base-pdo.php'); 
     ?>
 </head>
 <body>
