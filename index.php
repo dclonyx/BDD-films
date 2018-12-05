@@ -73,13 +73,19 @@
             
 
             <?php
-            include('php/film.php'); 
+            include('php/film.php');
+            
+            function is_image($filename) {
+                return (preg_match("/(.*)(.gif|.bmp|.png|.jpg|.jpeg)$/iU", $filename));
+            }
+
+
             // On affiche chaque entrée une à une
             while ($donnees = $reponse->fetch())
             {
             ?>
             <div id="<?php echo $donnees['nomFilm']; ?>" class="bandeaufilm">
-                <?php if ($donnees['afficheFilm'] != "") {?>
+                <?php if (($donnees['afficheFilm'] != "") && (is_image($donnees['afficheFilm']))) {?>
 
                 <div class="affiche"><img src="<?php echo $donnees['afficheFilm']; ?>" alt=""></div>
 
