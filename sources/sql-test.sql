@@ -1,1 +1,0 @@
-INSERT INTO utilisateur (nomUtilisateur) SELECT 'nomUtilisateur' FROM TABLE14
