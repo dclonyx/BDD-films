@@ -1,7 +1,7 @@
 <?php
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=film_decodeur;charset=utf8', 'aformac', 'Am45sicc25');
+	$bdd = new PDO('mysql:host=localhost;dbname=test_film;charset=utf8', 'mydev', 'developpeur');
 }
 catch (Exception $e)
 {

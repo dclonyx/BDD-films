@@ -96,8 +96,7 @@
                 <?php } ?>
                 <div class="text">
                     <h2><?php echo $donnees['nomFilm']; ?></h2>
-                    <p></p>
-                </div>
+                    <p><?php echo $donnees['resumeFilm']; ?></p>                </div>
             </div>
             <?php
             }
