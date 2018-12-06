@@ -1,7 +1,8 @@
 <?php
 // On récupère tout le contenu de la table film
 $reponse = $bdd->query
-('SELECT *
-FROM Film 
-WHERE anneeFilm');
+('SELECT DISTINCT anneeFilm
+FROM Film  
+WHERE anneeFilm != " "
+ORDER BY anneeFilm ASC');
 ?>
