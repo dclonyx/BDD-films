@@ -14,26 +14,30 @@ include('base-pdo.php');
 
 ?>
 
-
-
 <?php
-
-
-// On affiche chaque entrée une à une
-while ($donnees = $reponse->fetch())
-{
+// On récupère tout le contenu de la table film
+$reponse = $bdd->query
+('SELECT *
+FROM Film');
 ?>
-<div id="<?php echo $donnees['nomFilm']; ?>" class="bandeaufilm">
-    <div class="affiche"><img src="<?php echo $donnees['nomFilm']; ?>" alt=""></div>
-        <div class="text">
-            <h2><?php echo $donnees['nomFilm']; ?></h2>
-                    <p></p>
-                </div>
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+<div id="listeAnnee"> 
+                <select id="annee" name="annee" size="1" class="liste">
+                    <?php
+                    include('php/annee.php'); 
+                    // On affiche chaque entrée une à une
+                    while ($donnees = $reponse->fetch())
+                    {
+                    ?>
+                    <option value="<?php echo $donnees['anneeFilm']; ?>"><?php echo $donnees['anneeFilm']; ?></option>
+                    <?php
+                    }
+                    $reponse->closeCursor(); // Termine le traitement de la requête
+                    ?>
+                </select>
             </div>
-<?php
-}
-$reponse->closeCursor(); // Termine le traitement de la requête
-?>
 
 </body>
     
