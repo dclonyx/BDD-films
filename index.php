@@ -16,10 +16,11 @@
     <header>
         <h1>Les films préférés des D Codeurs du Lac</h1>
     </header>
-
+    
     <main>
+        <a href="./php/demande.php" id="new">Ajouter un film</a>
         <!-- <h2>Filtres</h2> -->
-            <div id="listing">
+        <div id="listing">
             <div id="listeGenre">
                 <select id="genre" name="genre" size="1" class="liste">
                     <?php
@@ -67,10 +68,7 @@
                     ?>
                 </select>
             </div>
-            </div>
-
-
-            
+        </div>
 
             <?php
             include('php/film.php');

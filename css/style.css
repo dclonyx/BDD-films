@@ -106,4 +106,34 @@ img{
     text-align: left;
 }
 
+#new{
+    height: 20px;
+    text-decoration: none;
+    width: 130px;
+    background-color: darkcyan;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 
+/* gestion page formulaire */
+
+form{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+h1{
+    margin: 20px;
+}
+input{
+    height: 30px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+button{
+    height: 30px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: darkcyan;
+}

@@ -5,4 +5,6 @@ $reponse = $bdd->query
 FROM genre
 WHERE nomGenre != " "
 ORDER BY nomGenre ASC');
+
 ?>
+
