@@ -1,0 +1,52 @@
+INSERT INTO personne (nomPersonne)
+SELECT acteur1 FROM `Tableau14`
+UNION
+SELECT acteur2 FROM `Tableau14`
+UNION
+SELECT acteur3 FROM `Tableau14`
+UNION
+SELECT acteur4 FROM `Tableau14`
+UNION
+SELECT acteur5 FROM `Tableau14`
+UNION
+SELECT Realisateur FROM `Tableau14`
+UNION
+SELECT scenariste FROM `Tableau14;`
+
+INSERT INTO utilisateur (nomUtilisateur)
+SELECT nomUtilisateur FROM `tableau14`
+GROUP BY nomUtilisateur;
+
+INSERT INTO pays (nomPays)
+SELECT nomPays FROM `Tableau14`
+UNION
+SELECT paysActeur1 FROM `Tableau14`
+UNION
+SELECT paysActeur2 FROM `Tableau14`
+UNION
+SELECT paysActeur3 FROM `Tableau14`
+UNION
+SELECT paysActeur4 FROM `Tableau14`
+UNION
+SELECT paysActeur5 FROM `Tableau14`
+UNION
+SELECT paysRealisateur FROM `Tableau14`
+UNION
+SELECT paysScenariste FROM `Tableau14`;
+
+INSERT INTO motClef (motClef)
+SELECT motClef1 FROM `Tableau14`
+UNION
+SELECT motClef2 FROM `Tableau14`
+UNION
+SELECT motClef3 FROM `Tableau14`;
+
+INSERT INTO genre (nomGenre)
+SELECT nomGenre FROM `Tableau14`
+GROUP BY nomGenre;
+
+INSERT INTO genre2 (nomGenre2)
+SELECT nomGenre2 FROM `Tableau14`
+GROUP BY nomGenre2;
+
+
