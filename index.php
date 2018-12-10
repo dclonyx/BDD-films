@@ -73,6 +73,8 @@
             <?php
             include('php/film.php');
             
+            // include('php/realisateur.php');
+            
             function is_image($filename) {
                 return (preg_match("/(.*)(.gif|.bmp|.png|.jpg|.jpeg)$/iU", $filename));
             }
@@ -93,8 +95,31 @@
 
                 <?php } ?>
                 <div class="text">
-                    <h2><?php echo $donnees['nomFilm']; ?></h2>
-                    <p><?php echo $donnees['resumeFilm']; ?></p>                </div>
+                    <div id="titreAn"><h2><?php echo $donnees['nomFilm']; ?></h2>
+                    <p><?php echo $donnees['anneeFilm']; ?></p></div>
+                    <p><?php echo $donnees['resumeFilm']; ?></p>  
+                    <?php $filmAct = $donnees['nomFilm'];
+                     include('php/personne.php');
+                    while ($gens = $personne->fetch())
+                    {
+                        if ($gens[0] == $filmAct) {
+                            ?>
+                        <p>Acteur: <?php echo $gens['nomPersonne']; ?></p>
+                        <?php 
+                        }
+                    }
+                    include('php/realisateur.php');
+                    while ($gen2 = $realise->fetch())
+                    {
+                        if ($gen2[0] == $filmAct) {
+                            ?>
+                        <p>Realisateur: <?php echo $gen2['nomPersonne']; ?></p> 
+                        <?php 
+                        }
+                    }
+                    ?>
+
+                    </div>
             </div>
             <?php
             }

@@ -79,7 +79,7 @@ option{
 
 .bandeaufilm{
     width: 90%;
-    height: 150px;
+    height: auto;
     border: 1px solid black;
     margin-top: 20px;
     box-shadow: 5px 5px 5px black;
@@ -98,6 +98,12 @@ img{
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+#titreAn {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
 }
 
 .text{
