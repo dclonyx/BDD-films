@@ -1,10 +1,8 @@
 <?php
 // On récupère tout le contenu de la table genre
-$reponse = $bdd->query
-('SELECT DISTINCT nomGenre 
+$requestGenre = $bdd->query
+('SELECT DISTINCT nomGenre,idGenre 
 FROM genre
 WHERE nomGenre != " "
 ORDER BY nomGenre ASC');
-
 ?>
-

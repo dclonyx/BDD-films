@@ -15,6 +15,7 @@ body{
     height: 100%;
     text-align: center;
     background-color:#00695C;
+    font-family: 'Roboto';
 }
 
 h1{
@@ -86,7 +87,13 @@ option{
     display: flex;
     border-radius: 10px;
     overflow: hidden;
-
+   
+}
+@media screen and (min-width: 960px) {
+    .bandeaufilm {
+        height: auto;
+        align-items: center;
+    }
 }
 
 .affiche{
@@ -105,5 +112,71 @@ img{
     margin-left: 10px;
     text-align: left;
 }
+                    
+#titreAn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
 
+#acteursPays {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; 
+}
 
+.paysLiens {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#utilisateur {
+    padding-top: 20px;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+#new{
+    height: 20px;
+    text-decoration: none;
+    width: 130px;
+    background-color: darkcyan;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    outline-color: #00695C;
+}
+
+/* gestion page formulaire */
+
+form{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+h1{
+    margin: 20px;
+}
+input{
+    height: 30px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+button{
+    height: 30px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: darkcyan;
+}

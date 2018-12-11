@@ -16,93 +16,110 @@
     <header>
         <h1>Les films préférés des D Codeurs du Lac</h1>
     </header>
-    
+
     <main>
-        <a href="./php/demande.php" id="new">Ajouter un film</a>
+    <?php 
+    require 'class/formulaire.php';
+    
+    ?>
         <!-- <h2>Filtres</h2> -->
         <div id="listing">
-            <div id="listeGenre">
-                <select id="genre" name="genre" size="1" class="liste">
-                    <?php
-                    include('php/genre.php'); 
-                    // On affiche chaque entrée une à une
-                    while ($donnees = $reponse->fetch())
-                    {
-                    ?>
-                    <option value="<?php echo $donnees['nomGenre']; ?>"><?php echo $donnees['nomGenre']; ?></option>
-                    <?php
-                    }
-                    $reponse->closeCursor(); // Termine le traitement de la requête
-                    ?>
-                </select>
-            </div>
-            
-            <div id="listeAnnee"> 
-                <select id="annee" name="annee" size="1" class="liste">
-                    <?php
-                    include('php/annee.php'); 
-                    // On affiche chaque entrée une à une
-                    while ($donnees = $reponse->fetch())
-                    {
-                    ?>
-                    <option value="<?php echo $donnees['anneeFilm']; ?>"><?php echo $donnees['anneeFilm']; ?></option>
-                    <?php
-                    }
-                    $reponse->closeCursor(); // Termine le traitement de la requête
-                    ?>
-                </select>
-            </div>
+        <div id="listeGenre">
+            <?php
+            include('php/genre.php'); 
+            $messages = $requestGenre->fetchAll(PDO::FETCH_OBJ);
+            echo '<form action="./index.php" method="get" name="FormAction">';
+            echo '<select id="genreFilm" name="genre" size="1" class="liste">';
 
-            <div id="listePays">
-                <select id="pays" name="pays" size="1" class="liste">
-                    <?php
-                    include('php/pays.php'); 
-                    // On affiche chaque entrée une à une
-                    while ($donnees = $reponse->fetch())
-                    {
-                    ?>
-                    <option value="<?php echo $donnees['nomPays']; ?>"><?php echo $donnees['nomPays']; ?></option>
-                    <?php
-                    }
-                    $reponse->closeCursor(); // Termine le traitement de la requête
-                    ?>
-                </select>
-            </div>
+            foreach($messages as $message)
+            {
+                echo $message->nomGenre.'<option value="'.$message->nomGenre.'">'.$message->nomGenre.'</option>';
+            }
+            echo '</select>';
+            echo '<input type="submit" value="Enregistrer"></form>';
+            ?>
+        </div>
+            
+        <div id="listeAnnee"> 
+            <?php
+            include('php/annee.php');
+            $messages = $requestAn->fetchAll(PDO::FETCH_OBJ); 
+            echo '<form action="./index.php" method="get" name="FormAn">';
+            echo '<select id="anFilm" name="anFilm" size="1" class="liste">';
+
+            foreach($messages as $message)
+            {
+            echo $message->anneeFilm.'<option value="'.$message->anneeFilm.'">'.$message->anneeFilm.'</option>';
+            }
+            echo '</select>';
+            echo '<input type="submit" value="Enregistrer"></form>';
+            ?>
         </div>
 
+        <div id="listePays">
             <?php
-            include('php/film.php');
-            
-            // include('php/realisateur.php');
-            
+            include('php/pays.php');
+            $messages = $requestPays->fetchAll(PDO::FETCH_OBJ); 
+            echo '<form action="./index.php" method="get" name="FormAn">';
+            echo '<select id="nomPays" name="nomPays" size="1" class="liste">';
+
+            foreach($messages as $message)
+            {
+            echo $message->nomPays.'<option value="'.$message->nomPays.'">'.$message->nomPays.'</option>';
+            }
+            echo '</select>';
+            echo '<input type="submit" value="Enregistrer"></form>';
+            ?>
+            </select>
+        </div>
+            </div>
+            <?php
             function is_image($filename) {
                 return (preg_match("/(.*)(.gif|.bmp|.png|.jpg|.jpeg)$/iU", $filename));
             }
+            
+
+            if (isset($_GET['anFilm']) && ($_GET['anFilm'] != NULL)) {
+                $anFilm = $_GET['anFilm'];
+                include('php/filmAn.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            } elseif (isset($_GET['genre']) && ($_GET['genre'] != NULL)) {
+                $genreFilm = $_GET['genre'];
+                include('php/filmGenre.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            } elseif (isset($_GET['nomPays']) && ($_GET['nomPays'] != NULL)) {
+                $nomPays = $_GET['nomPays'];
+                include('php/filmPays.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ); 
+            } else {
+                include('php/film.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            }
 
 
-            // On affiche chaque entrée une à une
-            while ($donnees = $reponse->fetch())
-            {
-            ?>
-            <div id="<?php echo $donnees['nomFilm']; ?>" class="bandeaufilm">
-                <?php if (($donnees['afficheFilm'] != "") && (is_image($donnees['afficheFilm']))) {?>
+            foreach($messages as $message)
+                {
+                ?>
 
-                <div class="affiche"><img src="<?php echo $donnees['afficheFilm']; ?>" alt=""></div>
+                <div id="<?php echo $message->nomFilm; ?>" class="bandeaufilm">
+                    <?php if (($message->afficheFilm != "") && (is_image($message->afficheFilm))) {?>
 
-                <?php } else  { ?>
+                    <div class="affiche"><img src="<?php echo $message->afficheFilm; ?>" alt=""></div>
 
-                <div class="affiche"><img src="https://via.placeholder.com/140x180"></div>
+                    <?php } else  { ?>
 
-                <?php } ?>
-                <div class="text">
+                    <div class="affiche"><img src="https://via.placeholder.com/140x180"></div>
+
+                    <?php } ?>
+                    <div class="text">
                     <div id="titreAn">
-                        <h2><?php echo $donnees['nomFilm']; ?></h2>
-                        <h2><?php echo $donnees['anneeFilm']; ?></h2>
+                        <h2><?php echo $message->nomFilm; ?></h2>
+                        <h2><?php echo $message->anneeFilm; ?></h2>
                     </div>
-                    <p><?php echo $donnees['resumeFilm']; ?></p> 
+                    <p><?php echo $message->resumeFilm; ?></p> 
                     <div id="acteursPays"> 
                         <div class="personnes">
-                            <?php $filmAct = $donnees['nomFilm'];
+                            <?php $filmAct = $message->nomFilm;
                             include('php/personne.php');
                             $acteurs = 0;
                             while ($gens = $personne->fetch())
@@ -171,11 +188,14 @@
                         </div>
                     </div>    
                 </div>
-            </div>
-            <?php
-            }
-            $reponse->closeCursor(); // Termine le traitement de la requête
+                </div>
+
+                <?php
+                }
             ?>
+
+
+            
     </main>
 
     <footer>
