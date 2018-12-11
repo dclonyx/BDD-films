@@ -6,7 +6,7 @@
 FROM Film 
 WHERE anneeFilm="2007"') */;
 
-$requestFilm = $bdd->query ('SELECT * FROM Film');
+$requestFilm = $bdd->query ('SELECT * FROM Film WHERE anneeFilm="'.$anFilm.'"');
 
 
 /* $requestFilmGenre = $bdd->query

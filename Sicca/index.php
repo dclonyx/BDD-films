@@ -20,6 +20,7 @@
     <main>
     <?php 
     require 'class/formulaire.php';
+    
     ?>
         <!-- <h2>Filtres</h2> -->
         <div id="listing">
@@ -28,7 +29,7 @@
             include('php/genre.php'); 
             $messages = $requestGenre->fetchAll(PDO::FETCH_OBJ);
             echo '<form action="./index.php" method="get" name="FormAction">';
-            echo '<select id="genre" name="genre" size="1" class="liste">';
+            echo '<select id="genreFilm" name="genre" size="1" class="liste">';
 
             foreach($messages as $message)
             {
@@ -73,43 +74,53 @@
         </div>
             </div>
             <?php
-            include('php/film.php');
-            
             function is_image($filename) {
                 return (preg_match("/(.*)(.gif|.bmp|.png|.jpg|.jpeg)$/iU", $filename));
             }
-
-            $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ); 
             
-             
-$genre = $_GET['genre']; 
 
-print("<center>Bonjour $genre</center>"); 
-
+            if (isset($_GET['anFilm']) && ($_GET['anFilm'] != NULL)) {
+                $anFilm = $_GET['anFilm'];
+                include('php/filmAn.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            } elseif (isset($_GET['genre']) && ($_GET['genre'] != NULL)) {
+                $genreFilm = $_GET['genre'];
+                include('php/filmGenre.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            } elseif (isset($_GET['nomPays']) && ($_GET['nomPays'] != NULL)) {
+                $nomPays = $_GET['nomPays'];
+                include('php/filmPays.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ); 
+            } else {
+                include('php/film.php');
+                $messages = $requestFilm->fetchAll(PDO::FETCH_OBJ);
+            }
 
 
             foreach($messages as $message)
-            {
+                {
+                ?>
+
+                <div id="<?php echo $message->nomFilm; ?>" class="bandeaufilm">
+                    <?php if (($message->afficheFilm != "") && (is_image($message->afficheFilm))) {?>
+
+                    <div class="affiche"><img src="<?php echo $message->afficheFilm; ?>" alt=""></div>
+
+                    <?php } else  { ?>
+
+                    <div class="affiche"><img src="https://via.placeholder.com/140x180"></div>
+
+                    <?php } ?>
+                    <div class="text">
+                        <h2><?php echo $message->nomFilm; ?></h2>
+                        <p><?php echo $message->resumeFilm; ?></p>                </div>
+                </div>
+
+                <?php
+                }
             ?>
 
-            <div id="<?php echo $message->nomFilm; ?>" class="bandeaufilm">
-                <?php if (($message->afficheFilm != "") && (is_image($message->afficheFilm))) {?>
 
-                <div class="affiche"><img src="<?php echo $message->afficheFilm; ?>" alt=""></div>
-
-                <?php } else  { ?>
-
-                <div class="affiche"><img src="https://via.placeholder.com/140x180"></div>
-
-                <?php } ?>
-                <div class="text">
-                    <h2><?php echo $message->nomFilm; ?></h2>
-                    <p><?php echo $message->resumeFilm; ?></p>                </div>
-            </div>
-
-            <?php
-            }
-            ?>
             
     </main>
 
