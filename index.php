@@ -18,6 +18,7 @@
     </header>
 
     <main>
+    <a href="./php/demande.php" id="new">Ajouter un film</a>
     <?php 
     require 'class/formulaire.php';
     
@@ -36,7 +37,7 @@
                 echo $message->nomGenre.'<option value="'.$message->nomGenre.'">'.$message->nomGenre.'</option>';
             }
             echo '</select>';
-            echo '<input type="submit" value="Enregistrer"></form>';
+            echo '<input type="submit" value="Valider"></form>';
             ?>
         </div>
             
@@ -52,7 +53,7 @@
             echo $message->anneeFilm.'<option value="'.$message->anneeFilm.'">'.$message->anneeFilm.'</option>';
             }
             echo '</select>';
-            echo '<input type="submit" value="Enregistrer"></form>';
+            echo '<input type="submit" value="Valider"></form>';
             ?>
         </div>
 
@@ -68,7 +69,7 @@
             echo $message->nomPays.'<option value="'.$message->nomPays.'">'.$message->nomPays.'</option>';
             }
             echo '</select>';
-            echo '<input type="submit" value="Enregistrer"></form>';
+            echo '<input type="submit" value="Valider"></form>';
             ?>
             </select>
         </div>
