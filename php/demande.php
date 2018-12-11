@@ -14,7 +14,7 @@
         require 'form.php';
         $form = new Form(array());
     ?>
-    <form action="./php/demande2.php" method="GET">
+    <form action="./demande2.php" method="GET">
 
         <?php
             echo $form->input('nomFilm', 'Nom du Film');
@@ -23,7 +23,7 @@
             echo $form->input('resumeFilm', 'Resume');
             echo $form->input('afficheFilm', 'Affiche');
             echo $form->input('lienBandeAnnonce', 'Bande annonce');
-        
+            
             echo $form->submit();
         ?>
     </form>
