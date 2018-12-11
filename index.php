@@ -95,31 +95,82 @@
 
                 <?php } ?>
                 <div class="text">
-                    <div id="titreAn"><h2><?php echo $donnees['nomFilm']; ?></h2>
-                    <p><?php echo $donnees['anneeFilm']; ?></p></div>
-                    <p><?php echo $donnees['resumeFilm']; ?></p>  
-                    <?php $filmAct = $donnees['nomFilm'];
-                     include('php/personne.php');
-                    while ($gens = $personne->fetch())
-                    {
-                        if ($gens[0] == $filmAct) {
-                            ?>
-                        <p>Acteur: <?php echo $gens['nomPersonne']; ?></p>
-                        <?php 
-                        }
-                    }
-                    include('php/realisateur.php');
-                    while ($gen2 = $realise->fetch())
-                    {
-                        if ($gen2[0] == $filmAct) {
-                            ?>
-                        <p>Realisateur: <?php echo $gen2['nomPersonne']; ?></p> 
-                        <?php 
-                        }
-                    }
-                    ?>
-
+                    <div id="titreAn">
+                        <h2><?php echo $donnees['nomFilm']; ?></h2>
+                        <h2><?php echo $donnees['anneeFilm']; ?></h2>
                     </div>
+                    <p><?php echo $donnees['resumeFilm']; ?></p> 
+                    <div id="acteursPays"> 
+                        <div class="personnes">
+                            <?php $filmAct = $donnees['nomFilm'];
+                            include('php/personne.php');
+                            $acteurs = 0;
+                            while ($gens = $personne->fetch())
+                            {
+                                if ($gens[0] == $filmAct && $acteurs == 0) {
+                                    ?>
+                                <span class="gras">Acteurs:</span> <?php echo $gens['nomPersonne']; ?>
+                                <?php 
+                                $acteurs++;
+                                } elseif ($gens[0] == $filmAct) {
+                                    echo ' '.','.' '.$gens['nomPersonne'];
+                                }
+                            }
+                            include('php/realisateur.php');
+                            while ($gen2 = $realise->fetch())
+                            {
+                                if ($gen2[0] == $filmAct) {
+                                    ?>
+                                <p><span class="gras">Realisateur:</span> <?php echo $gen2['nomPersonne']; ?></p>
+                                <?php 
+                                }
+                            }
+                            include('php/scenariste.php');
+                            while ($gen3 = $produit->fetch())
+                            {
+                                if ($gen3[0] == $filmAct) {
+                                    ?>
+                                <p><span class="gras">Scénariste:</span> <?php echo $gen3['nomPersonne']; ?></p> 
+                                <?php 
+                                }
+                            } ?>
+                        </div> 
+                        <div class="paysLiens">   
+                                <?php
+                            include('php/paysFilm.php');
+                            while ($origine = $pays->fetch())
+                            {
+                                if ($origine[0] == $filmAct) {
+                                    ?>
+                                <p><span class="gras">Origine:</span> <?php echo $origine['nomPays']; ?></p> 
+                                <?php 
+                                }
+                            }
+                            include('php/bandeAnnonce.php');
+                            while ($bandeAnn = $liens->fetch())
+                            {
+                                if ($bandeAnn[0] == $filmAct) {
+                                    ?>
+                                <a href="<?php echo $bandeAnn['lienBandeAnnonce']; ?>" target="_blank">Bande Annonce </a>
+                                <?php 
+                                }
+                            } ?>
+                            <div id="utilisateur">
+                                <?php
+                                include('php/utilisateur.php');
+                                while ($depose = $utilisateur->fetch())
+                                {
+                                    if ($depose[0] == $filmAct) {
+                                        ?>
+                                    <p><span class="gras">Proposé par:</span> <?php echo $depose['nomUtilisateur']; ?></p> 
+                                    <?php 
+                                    }
+                                }
+                                ?>
+                            </div>    
+                        </div>
+                    </div>    
+                </div>
             </div>
             <?php
             }
